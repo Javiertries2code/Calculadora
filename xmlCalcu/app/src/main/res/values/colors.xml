@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pressed_blue">#FFADD8E6</color>
+    <color name="defaul_blue">#FF00008B</color>
+    <color name="focused_blue">#FF003366</color>
+    <color name="pressed_red">#FFFF6F6F</color>
+    <color name="default_orange">#FFFFA500</color>
+    <color name="focused_red">#FFFF0000</color>
+    <color name="display_backlground">#FFE2E9EE</color>
+    <color name="background_port">#81BBEB</color>
+    <color name="background_land">#E9E0C4</color>
+    <color name="background_text">#11371E1E</color>
+
+
+</resources>

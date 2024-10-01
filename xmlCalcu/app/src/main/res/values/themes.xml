@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CalculadoraCasa" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="buttonStyle">@style/number_button</item>
+
+    </style>
+
+    <style name="Theme.CalculadoraCasa" parent="Base.Theme.CalculadoraCasa" />
+</resources>
