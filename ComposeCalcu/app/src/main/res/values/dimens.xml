@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    //button number settings
+    <dimen name="number_width">55dp</dimen>
+    <dimen name="number_height">55dp</dimen>
+    <dimen name="number_text_size">20dp</dimen>
+    <dimen name="button_stroke">2dp</dimen>
+    <dimen name="number_radius">10dp</dimen>
+
+    // button operator settings
+    <dimen name="operator_width">75dp</dimen>
+    <dimen name="operator_height">75dp</dimen>
+    <dimen name="operator_text_size">20dp</dimen>
+    <dimen name="operator_stroke">2dp</dimen>
+    <dimen name="operator_radius">10dp</dimen>
+
+    //constraints padding
+    //botton
+    <dimen name="port_botton">50dp</dimen>
+    <dimen name="land_botton">20dp</dimen>
+    //top
+    <dimen name="port_top">50dp</dimen>
+    <dimen name="land_top">20dp</dimen>
+
+    //padding
+    <dimen name="padding_button">5dp</dimen>
+
+</resources>
