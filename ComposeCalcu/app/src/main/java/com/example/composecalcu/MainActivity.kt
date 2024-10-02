@@ -40,11 +40,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           my_calcu()
-            }
+            my_calcu()
         }
     }
-
+}
 
 
 @Composable
@@ -53,7 +52,7 @@ fun OperatorButton(
     onOperatorClick: (String) -> Unit,
     backgroundColor: Color = colorResource(R.color.default_orange)
 
-    ) {
+) {
     Button(
         onClick = { onOperatorClick(operator) },
         colors = ButtonDefaults.buttonColors(backgroundColor),
@@ -61,7 +60,7 @@ fun OperatorButton(
         modifier = Modifier.padding(8.dp),
 
 
-    ) {
+        ) {
         Text(text = operator, fontSize = 24.sp, color = Color.Black)
     }
 }
@@ -84,114 +83,127 @@ fun NumberButton(
 }
 
 
-
-
 @Preview(showBackground = true)
 @Composable
 fun my_calcu() {
     var numberDisplay by rememberSaveable { mutableStateOf("0") }
- var sign: String
+    var sign: String
     fun OperatorButtonClick(operator: String) {
         if (operator == "C")
             numberDisplay = "0"
-        else if (numberDisplay == "0")
-            numberDisplay=operator
-        else if(operator == "+/-")
-        {
-            if (numberDisplay[0] != '-') {
-                sign = "-" + numberDisplay
-                numberDisplay = sign
-            }
+        else if (numberDisplay == "0" && operator !=  "+/-")
+            numberDisplay = operator
+        else if (operator == "+/-") {
+            if (numberDisplay == "0")
+                numberDisplay = "0"
             else {
-                sign = numberDisplay.substring(1)
-                numberDisplay = sign
+                if (numberDisplay[0] != '-') {
+                    sign = "-" + numberDisplay
+                    numberDisplay = sign
+                } else {
+                    sign = numberDisplay.substring(1)
+                    numberDisplay = sign
+                }
             }
-        }
-        else
-            numberDisplay+=operator
+        } else
+            numberDisplay += operator
 
     }
+
     fun NumberButtonClick(number: String) {
         if (numberDisplay == "0")
-            numberDisplay=number
+            numberDisplay = number
         else
-            numberDisplay+=number
+            numberDisplay += number
     }
-  Column(modifier = Modifier
-      .fillMaxSize()
-      .background(Color.DarkGray),
-      verticalArrangement = Arrangement.SpaceEvenly
-  )
-  {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.DarkGray),
+        verticalArrangement = Arrangement.SpaceEvenly
+    )
+    {
 
-      Row(modifier = Modifier
-          .fillMaxWidth()
-          .padding(10.dp)
-          .height(120.dp)){
-          TextField(
-              value = numberDisplay,
-              onValueChange = {},
-              modifier = Modifier.fillMaxWidth(),
-              textStyle = TextStyle(
-                  fontSize = 75.sp,
-                  color = Color.Black,
-                  textAlign = TextAlign.End
-              ),
-          )
-      }
-      //LineaOp("C", "%","/", "X")
-      Row( horizontalArrangement = Arrangement.SpaceEvenly,
-          modifier = Modifier.fillMaxWidth())
-      {
-          OperatorButton(operator = "C", onOperatorClick = ::OperatorButtonClick)
-          OperatorButton(operator = "%", onOperatorClick = ::OperatorButtonClick)
-          OperatorButton(operator = "/", onOperatorClick = ::OperatorButtonClick)
-          OperatorButton(operator = "X", onOperatorClick = ::OperatorButtonClick)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .height(120.dp)
+        ) {
+            TextField(
+                value = numberDisplay,
+                onValueChange = {},
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = TextStyle(
+                    fontSize = 75.sp,
+                    color = Color.Black,
+                    textAlign = TextAlign.End
+                ),
+            )
+        }
+        //LineaOp("C", "%","/", "X")
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
+        )
+        {
+            OperatorButton(operator = "C", onOperatorClick = ::OperatorButtonClick)
+            OperatorButton(operator = "%", onOperatorClick = ::OperatorButtonClick)
+            OperatorButton(operator = "/", onOperatorClick = ::OperatorButtonClick)
+            OperatorButton(operator = "X", onOperatorClick = ::OperatorButtonClick)
 
-      }
+        }
 
-   //   LineaNum(7,8,9, "+")
-      Row( horizontalArrangement = Arrangement.SpaceEvenly,
-          modifier = Modifier.fillMaxWidth())
-      {
-          NumberButton(number = "7", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "8", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "9", onNumberClick = ::NumberButtonClick)
-          OperatorButton(operator = "+", onOperatorClick = ::OperatorButtonClick)
+        //   LineaNum(7,8,9, "+")
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
+        )
+        {
+            NumberButton(number = "7", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "8", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "9", onNumberClick = ::NumberButtonClick)
+            OperatorButton(operator = "+", onOperatorClick = ::OperatorButtonClick)
 
-      }
+        }
 
-     // LineaNum(4,5,6, "-")
-      Row( horizontalArrangement = Arrangement.SpaceEvenly,
-          modifier = Modifier.fillMaxWidth())
-      {
-          NumberButton(number = "4", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "5", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "6", onNumberClick = ::NumberButtonClick)
-          OperatorButton(operator = "-", onOperatorClick = ::OperatorButtonClick)
+        // LineaNum(4,5,6, "-")
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
+        )
+        {
+            NumberButton(number = "4", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "5", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "6", onNumberClick = ::NumberButtonClick)
+            OperatorButton(operator = "-", onOperatorClick = ::OperatorButtonClick)
 
-      }
-     // LineaNum(1,2,3, "/")
-      Row( horizontalArrangement = Arrangement.SpaceEvenly,
-          modifier = Modifier.fillMaxWidth())
-      {
-          NumberButton(number = "1", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "2", onNumberClick = ::NumberButtonClick)
-          NumberButton(number = "3", onNumberClick = ::NumberButtonClick)
-          OperatorButton(operator = "/", onOperatorClick = ::OperatorButtonClick)
+        }
+        // LineaNum(1,2,3, "/")
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
+        )
+        {
+            NumberButton(number = "1", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "2", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = "3", onNumberClick = ::NumberButtonClick)
+            OperatorButton(operator = "/", onOperatorClick = ::OperatorButtonClick)
 
-      }
+        }
 
-     Row( horizontalArrangement = Arrangement.SpaceEvenly,
-         modifier = Modifier.fillMaxWidth())
-     {
-         NumberButton(number = "0", onNumberClick = ::NumberButtonClick)
-         NumberButton(number = ".", onNumberClick = ::NumberButtonClick)
-         OperatorButton(operator = "+/-", onOperatorClick = ::OperatorButtonClick)
-         OperatorButton(operator = "=", onOperatorClick = ::OperatorButtonClick)
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
+        )
+        {
+            NumberButton(number = "0", onNumberClick = ::NumberButtonClick)
+            NumberButton(number = ".", onNumberClick = ::NumberButtonClick)
+            OperatorButton(operator = "+/-", onOperatorClick = ::OperatorButtonClick)
+            OperatorButton(operator = "=", onOperatorClick = ::OperatorButtonClick)
 
-     }
-  }
+        }
+    }
 
 
 }
