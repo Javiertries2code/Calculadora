@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val configuration = LocalConfiguration.current
-// Hacemos una composición diferente según estado
+
             when (configuration.orientation) {
                 Configuration.ORIENTATION_LANDSCAPE -> {
                     LandscapeScreenComposition()
@@ -87,9 +88,9 @@ fun OperatorButton(
             onClick = { },
             colors = ButtonDefaults.buttonColors(backgroundColor),
             shape = RoundedCornerShape(12.dp),
-            modifier = Modifier.padding(8.dp).width(75.dp).height(50.dp)
+            modifier = Modifier.padding(8.dp).width(70.dp).height(50.dp)
         ) {
-            Text(text = number.toString(), fontSize = 18.sp, color = Color.Black)
+            Text(text = number.toString(), fontSize = 14.sp, color = Color.Black)
         }
     }
 
@@ -158,36 +159,22 @@ fun NumberButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp)
-                    .height(60.dp).padding(top = 5.dp)
+                    .height(70.dp).padding(top = 5.dp)
             ) {
-                TextField(
-                    value = numberDisplay,
-                    onValueChange = {},
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-                    textStyle = TextStyle(
-                        fontSize = 25.sp,
-                        color = Color.Black,
-                        textAlign = TextAlign.End
-                    ),
-                )
-            }
-            //LineaOp("C", "%","/", "X")
-            Row(
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.fillMaxWidth()
-            )
-            {
-                OperatorButton(operator = "C", onOperatorClick = ::OperatorButtonClick)
-                OperatorButton(operator = "CE", onOperatorClick = ::OperatorButtonClick)
-                OperatorButton(operator = "M", onOperatorClick = ::OperatorButtonClick)
-                OperatorButton(operator = "M+", onOperatorClick = ::OperatorButtonClick)
-                PowerButton(number = "ON", onOperatorClick = ::OperatorButtonClick)
 
-
+                    TextField(
+                        value = numberDisplay,
+                        onValueChange = {},
+                        modifier = Modifier.fillMaxWidth().padding(start = 90.dp, end = 90.dp),
+                        textStyle = TextStyle(
+                            fontSize = 35.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.End
+                        ),
+                    )
 
             }
 
-            //   LineaNum(7,8,9, "+")
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
@@ -237,11 +224,15 @@ fun NumberButton(
             {
                 NumberButton(number = "0", onNumberClick = ::NumberButtonClick)
                 NumberButton(number = ".", onNumberClick = ::NumberButtonClick)
-                NumberButton(number = "00", onNumberClick = ::NumberButtonClick)
+               // NumberButton(number = "00", onNumberClick = ::NumberButtonClick)
                 OperatorButton(operator = "=", onOperatorClick = ::OperatorButtonClick)
-                OperatorButton(operator = "\u221A", onOperatorClick = ::OperatorButtonClick)
+                OperatorButton(operator = "C", onOperatorClick = ::OperatorButtonClick)
+                PowerButton(number = "ON", onOperatorClick = ::OperatorButtonClick)
+
+                // OperatorButton(operator = "\u221A", onOperatorClick = ::OperatorButtonClick)
 
             }
+
         }
 
 
@@ -316,8 +307,8 @@ fun VerticalScreenComposition() {
             modifier = Modifier.fillMaxWidth()
         )
         {
+            PowerButton(number = "ON", onOperatorClick = ::OperatorButtonClick)
             OperatorButton(operator = "C", onOperatorClick = ::OperatorButtonClick)
-            OperatorButton(operator = "CE", onOperatorClick = ::OperatorButtonClick)
             OperatorButton(operator = "/", onOperatorClick = ::OperatorButtonClick)
             OperatorButton(operator = "X", onOperatorClick = ::OperatorButtonClick)
 
