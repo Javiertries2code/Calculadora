@@ -9,7 +9,6 @@
     tools:context=".MainActivity">
 
 
-
     <Button
         android:id="@+id/buttonOpMasMenos"
         android:layout_width="@dimen/number_width"
@@ -20,9 +19,7 @@
         android:text="+-"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/buttonOpResta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpPercent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOpCE"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
@@ -65,9 +62,7 @@
         android:text="CE"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/buttonOpMasMenos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOpC"
         app:layout_constraintTop_toBottomOf="@+id/buttonOpC" />
 
     <Button
@@ -209,9 +204,7 @@
         android:text="X"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpDiv"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOpResta"
         app:layout_constraintTop_toBottomOf="@+id/buttonOpResta" />
 
     <Button
@@ -223,9 +216,7 @@
         android:text="-"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/buttonOpMulti"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonOpSuma"
+        app:layout_constraintEnd_toEndOf="@+id/buttonOpMasMenos"
         app:layout_constraintTop_toBottomOf="@+id/buttonOpMasMenos" />
 
     <Button
@@ -305,9 +296,11 @@
         android:layout_width="618dp"
         android:layout_height="109dp"
         android:layout_marginTop="@dimen/land_top"
-        android:ems="10"
-        android:inputType="number"
         android:background="@color/background_text"
+        android:ems="10"
+        android:gravity="end"
+        android:inputType="number"
+        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="83dp" />
 
